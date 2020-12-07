@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -16,17 +17,17 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="NewsPaper"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
@@ -52,9 +53,14 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        /* Add header */
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
+         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
+        }}
       />
     </TabOneStack.Navigator>
+
   );
 }
 
@@ -66,8 +72,12 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center',headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',
+          headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} /> }}
       />
     </TabTwoStack.Navigator>
   );
 }
+
+/* image 6 */
