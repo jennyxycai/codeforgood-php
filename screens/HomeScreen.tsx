@@ -25,17 +25,23 @@ export default function HomeScreen({ navigation: { navigate } }) {
     <View style={styles.container}>
       <Text style={styles.slogan}>Empowering Parents to Nurture Children</Text>
       <Text style={styles.slogan}>and Build Stronger Families</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <Text style={styles.title}>WELCOME</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <Text style={styles.description}>We offer free immediate parent support services through our 24/7 Helpline and Parent Support groups.</Text>
       <Text style={styles.description}>All resources we will provide are free and confidential.</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Button title = "NewsLetter" onPress={() => navigate('NewsPaper')}></Button>
-  
-      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.networkforgood.org/donation/ExpressDonation.aspx?ORGID2=042657321&vlrStratCode=eRlCiRtNcKXhjfkf6kZ0AeNSNP%2bPrhKg0As6iIOlzYE4GxFLiqnY4fCEM2ylS0av')} style={styles.donateButton}>
-        <Text style={styles.donateButtonText}>Donate/Support US</Text>
+      <TouchableOpacity onPress={() => navigate('PhoneTextSupport')} style={styles.homeButton}>
+        <Text style={styles.homeButtonText}>Text and Phone Support</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.parentshelpingparents.org/new-info')} style={styles.Button}>
-        <Text style={styles.ButtonText}>Sign up for our newsletter</Text>
+      <TouchableOpacity onPress={() => navigate('SupporGroup')} style={styles.homeButton}>
+        <Text style={styles.homeButtonText}>    Support Group     </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigate('NewsPaper')} style={styles.homeButton}>
+        <Text style={styles.homeButtonText}>         News         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigate('SupportUs')} style={styles.homeButton}>
+        <Text style={styles.homeButtonText}>      Support US      </Text>
       </TouchableOpacity>
       <EditScreenInfo path="/screens/HomeScreen.js" />
     </View>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 45,
+    fontSize: 40,
     fontWeight: 'bold',
     color: '#205BB5',
   },
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: '80%',
   },
@@ -67,32 +73,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     alignItems: 'center',
   },
-  donateButton: {
+  homeButton: {
     margin: 1,
     backgroundColor: "white",
-    borderRadius: 15,
+    borderRadius: 10,
     borderWidth: 1,
-    padding : 20,
+    padding : 10,
   },
-  donateButtonText: {
-    fontSize: 24,
-    color: '#205BB5',
-    fontWeight: 'bold',
+  homeButtonText: {
+    fontSize: 18,
+    color: '#000000',
   }, 
-  Button: {
-    margin: 1,
-    backgroundColor: "white",
-    borderRadius: 15,
-    borderWidth: 1,
-  },
-  ButtonText: {
-  margin: 4,
-  paddingHorizontal: 6,
-  textAlign: "center",
-  backgroundColor: "white",
-  color: '#000000',
-  fontSize: 20,
-  }, 
-  
+    
 });
 

@@ -9,7 +9,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import HomeScreen from '../screens/HomeScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList } from '../types';
+import SupportScreen from  '../screens/SupportScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList, SupportParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -30,6 +31,13 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="NewsPaper"
         component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SupportUs"
+        component={SupportNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -83,6 +91,26 @@ function HomeNavigator() {
 
   );
 }
+
+const SupportStack = createStackNavigator<SupportParamList>();
+
+function SupportNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="SupportScreen"
+        component={SupportScreen}
+        /* Add header */
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
+         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
+        }}
+      />
+    </HomeStack.Navigator>
+
+  );
+}
+
 
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 

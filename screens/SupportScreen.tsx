@@ -25,19 +25,19 @@ export default function HomeScreen({ navigation: { navigate } }) {
     <View style={styles.container}>
       
       <Text style={styles.title}>Support Us</Text>
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
       <Text style={styles.description}>Thanks for you support. Here are the ways that you can contribute to Parents Helping Parents</Text>
       <Text style={styles.description}>All resources we will provide are free and confidential.</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Button title = "NewsLetter" onPress={() => navigate('NewsPaper')}></Button>
-  
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
       <TouchableOpacity onPress= {()=> Linking.openURL('https://www.networkforgood.org/donation/ExpressDonation.aspx?ORGID2=042657321&vlrStratCode=eRlCiRtNcKXhjfkf6kZ0AeNSNP%2bPrhKg0As6iIOlzYE4GxFLiqnY4fCEM2ylS0av')} style={styles.donateButton}>
-        <Text style={styles.donateButtonText}>Donate/Support US</Text>
+        <Text style={styles.donateButtonText}>Donate</Text>
       </TouchableOpacity>
-      <Text style={styles.green}>COLLABORATE</Text>
-      <Text style={styles.green}>WITH US</Text>
-      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.parentshelpingparents.org/new-info')} style={styles.Button}>
-        <Text style={styles.ButtonText}>Sign up for our newsletter</Text>
+      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.surveymonkey.com/r/VolunteerApplication-NEW')} style={styles.CollaborateButton}>
+        <Text style={styles.CollaborateButtonText}>Volunteer</Text>
       </TouchableOpacity>
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
+      <Text style={styles.green}>CONTACT US</Text>
+      <Text style={styles.description2}>info@parentshelpingparents.org</Text>
       <EditScreenInfo path="/screens/HomeScreen.js" />
     </View>
   );
@@ -50,22 +50,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 45,
+    fontSize: 40,
     fontWeight: 'bold',
     color: '#205BB5',
   },
   green: {
-    fontSize: 45,
+    fontSize: 40,
     fontWeight: 'bold',
     color: '#77A22F',
-  },  
-  slogan: {
-    alignItems: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+  }, 
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: '80%',
   },
@@ -73,31 +68,40 @@ const styles = StyleSheet.create({
     fontSize: 14,
     alignItems: 'center',
   },
+  description2: {
+    fontSize: 20,
+    alignItems: 'center',
+  },
   donateButton: {
     margin: 1,
     backgroundColor: "white",
     borderRadius: 15,
     borderWidth: 1,
-    padding : 20,
+    padding : 10,
   },
   donateButtonText: {
-    fontSize: 24,
+    margin: 4,
+    paddingHorizontal: 6,
+    fontSize: 28,
     color: '#205BB5',
     fontWeight: 'bold',
+    textAlign: "center",
   }, 
-  Button: {
+  CollaborateButton: {
     margin: 1,
     backgroundColor: "white",
     borderRadius: 15,
     borderWidth: 1,
+    padding : 10,
   },
-  ButtonText: {
+  CollaborateButtonText: {
   margin: 4,
   paddingHorizontal: 6,
   textAlign: "center",
   backgroundColor: "white",
-  color: '#000000',
-  fontSize: 20,
+  fontSize: 28,
+  color: '#205BB5',
+  fontWeight: 'bold',
   }, 
   
 });
