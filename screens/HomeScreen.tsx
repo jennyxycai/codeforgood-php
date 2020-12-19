@@ -25,12 +25,12 @@ export default function HomeScreen({ navigation: { navigate } }) {
     <View style={styles.container}>
       <Text style={styles.slogan}>Empowering Parents to Nurture Children</Text>
       <Text style={styles.slogan}>and Build Stronger Families</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
       <Text style={styles.title}>WELCOME</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
       <Text style={styles.description}>We offer free immediate parent support services through our 24/7 Helpline and Parent Support groups.</Text>
       <Text style={styles.description}>All resources we will provide are free and confidential.</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
       <TouchableOpacity onPress={() => navigate('PhoneTextSupport')} style={styles.homeButton}>
         <Text style={styles.homeButtonText}>Text and Phone Support</Text>
       </TouchableOpacity>

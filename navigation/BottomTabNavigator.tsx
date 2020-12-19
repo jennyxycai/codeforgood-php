@@ -10,7 +10,9 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import HomeScreen from '../screens/HomeScreen';
 import SupportScreen from  '../screens/SupportScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList, SupportParamList } from '../types';
+import PhoneTextSupportScreen from  '../screens/PhoneTextSupport';
+import NewsScreen from  '../screens/NewsScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList, SupportParamList, PhoneTextSupportParamList, NewsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -30,7 +32,14 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="NewsPaper"
-        component={TabTwoNavigator}
+        component={NewsNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Stress Line"
+        component={PhoneTextSupportNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -54,24 +63,6 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
-
-function TabOneNavigator() {
-  return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        /* Add header */
-        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
-         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
-         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
-        }}
-      />
-    </TabOneStack.Navigator>
-
-  );
-}
 
 const HomeStack = createStackNavigator<HomeParamList>();
 
@@ -111,22 +102,45 @@ function SupportNavigator() {
   );
 }
 
+const PhoneTextSupportStack = createStackNavigator<PhoneTextSupportParamList>();
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
+function PhoneTextSupportNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center',headerTitleStyle: {fontWeight: 'bold',},
-         headerTintColor: '#205BB5',
-          headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} /> }}
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="PhoneTextSupport"
+        component={PhoneTextSupportScreen}
+        /* Add header */
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
+         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
+        }}
       />
-    </TabTwoStack.Navigator>
+    </HomeStack.Navigator>
+
   );
 }
+
+const NewsStack = createStackNavigator<NewstParamList>();
+
+function NewsNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="NewsPaper"
+        component={NewsScreen}
+        /* Add header */
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
+         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
+        }}
+      />
+    </HomeStack.Navigator>
+
+  );
+}
+
+
 
 /* image 6 */
 
