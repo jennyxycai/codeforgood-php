@@ -121,7 +121,7 @@ function PhoneTextSupportNavigator() {
   );
 }
 
-const NewsStack = createStackNavigator<NewstParamList>();
+const NewsStack = createStackNavigator<NewsParamList>();
 
 function NewsNavigator() {
   return (

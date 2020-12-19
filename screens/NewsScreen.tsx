@@ -24,20 +24,9 @@ export default function NewsScreen({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.title}>Support Us</Text>
+      <Text style={styles.title}>Our Newsletter</Text>
       <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
-      <Text style={styles.description}>Thanks for you support. Here are the ways that you can contribute to Parents Helping Parents</Text>
-      <Text style={styles.description}>All resources we will provide are free and confidential.</Text>
-      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
-      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.networkforgood.org/donation/ExpressDonation.aspx?ORGID2=042657321&vlrStratCode=eRlCiRtNcKXhjfkf6kZ0AeNSNP%2bPrhKg0As6iIOlzYE4GxFLiqnY4fCEM2ylS0av')} style={styles.donateButton}>
-        <Text style={styles.donateButtonText}>Donate</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress= {()=> Linking.openURL('https://www.surveymonkey.com/r/VolunteerApplication-NEW')} style={styles.CollaborateButton}>
-        <Text style={styles.CollaborateButtonText}>Volunteer</Text>
-      </TouchableOpacity>
-      <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
-      <Text style={styles.green}>CONTACT US</Text>
-      <Text style={styles.description2}>info@parentshelpingparents.org</Text>
+      
       <EditScreenInfo path="/screens/HomeScreen.js" />
     </View>
   );
