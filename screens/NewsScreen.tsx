@@ -24,9 +24,13 @@ export default function NewsScreen({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.title}>Our Newsletter</Text>
+      <Text style={styles.title}>Our News Letter</Text>
+      <Text style={styles.description}>Stay updated on what's happening in the world of Parents Helping Parents!</Text>
+      <Text style={styles.description}>Subscribe to our e-newsletter below</Text>
       <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" />  
-      
+      <TouchableOpacity onPress= {()=> Linking.openURL('')} style={styles.signupButton}>
+        <Text style={styles.signupButtonText}>Sign Up for Our News Letter</Text>
+      </TouchableOpacity>
       <EditScreenInfo path="/screens/HomeScreen.js" />
     </View>
   );
@@ -61,36 +65,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignItems: 'center',
   },
-  donateButton: {
+  signupButton: {
     margin: 1,
     backgroundColor: "white",
     borderRadius: 15,
     borderWidth: 1,
     padding : 10,
   },
-  donateButtonText: {
+  signupButtonText: {
     margin: 4,
     paddingHorizontal: 6,
-    fontSize: 28,
-    color: '#205BB5',
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: "center",
-  }, 
-  CollaborateButton: {
-    margin: 1,
-    backgroundColor: "white",
-    borderRadius: 15,
-    borderWidth: 1,
-    padding : 10,
-  },
-  CollaborateButtonText: {
-  margin: 4,
-  paddingHorizontal: 6,
-  textAlign: "center",
-  backgroundColor: "white",
-  fontSize: 28,
-  color: '#205BB5',
-  fontWeight: 'bold',
   }, 
   
 });
