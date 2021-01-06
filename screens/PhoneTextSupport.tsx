@@ -6,8 +6,20 @@ import { Button } from 'react-native';
 import {useState} from 'react';
 import { SafeAreaView, StyleSheet, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import SendSMS from 'react-native-sms';
-
-export default function PhoneTextSupportScreen() {
+import { useNavigation } from '@react-navigation/native';
+function MyBackButton() {
+    const navigation = useNavigation();
+  
+    return (
+      <Button
+        title="Back"
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
+    );
+  }
+export default function PhoneTextSupportScreen({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Phone and Text Support</Text>

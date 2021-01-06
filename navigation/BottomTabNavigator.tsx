@@ -12,7 +12,8 @@ import HomeScreen from '../screens/HomeScreen';
 import SupportScreen from  '../screens/SupportScreen';
 import PhoneTextSupportScreen from  '../screens/PhoneTextSupport';
 import NewsScreen from  '../screens/NewsScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList, SupportParamList, PhoneTextSupportParamList, NewsParamList } from '../types';
+import GroupScreen from  '../screens/GroupScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, HomeParamList, SupportParamList, PhoneTextSupportParamList, NewsParamList, GroupParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -40,6 +41,13 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Stress Line"
         component={PhoneTextSupportNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Support Group"
+        component={GroupNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -139,6 +147,26 @@ function NewsNavigator() {
 
   );
 }
+
+const GroupStack = createStackNavigator<GroupParamList>();
+
+function GroupNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="SupportGroup"
+        component={GroupScreen}
+        /* Add header */
+        options={{ headerTitle: 'Parents Helping Parents' , headerTitleAlign : 'center', headerTitleStyle: {fontWeight: 'bold',},
+         headerTintColor: '#205BB5',headerStyle: {backgroundColor: '#FFFFFF', },  
+         headerRight: () => <Image source={{ uri: "https://static.wixstatic.com/media/ff0e80_e7eee7deb6c744aeaada503f29197af3~mv2.png/v1/fill/w_130,h_128,al_c,q_85,usm_0.66_1.00_0.01/php_logo%20no%20background%20with%20white%20text_p.webp" }} style={{ width: 37, height: 35 }} />
+        }}
+      />
+    </HomeStack.Navigator>
+
+  );
+}
+
 
 
 

@@ -34,7 +34,7 @@ export default function HomeScreen({ navigation: { navigate } }) {
       <TouchableOpacity onPress={() => navigate('PhoneTextSupport')} style={styles.homeButton}>
         <Text style={styles.homeButtonText}>Text and Phone Support</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigate('SupporGroup')} style={styles.homeButton}>
+      <TouchableOpacity onPress={() => navigate('SupportGroup')} style={styles.homeButton}>
         <Text style={styles.homeButtonText}>    Support Group     </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigate('NewsPaper')} style={styles.homeButton}>

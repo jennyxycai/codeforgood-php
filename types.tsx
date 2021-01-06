@@ -25,3 +25,16 @@ export type SupportParamList = {
   SupportScreen: undefined;
 };
 
+export type PhoneTextSupportParamList = {
+  PhoneTextSupportScreen: undefined;
+};
+
+export type NewsParamList = {
+  NewsScreen: undefined;
+};
+
+export type GroupParamList = {
+  GroupScreen: undefined;
+};
+
+
