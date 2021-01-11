@@ -2,186 +2,95 @@ import * as React from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import {Text, View } from '../components/Themed';
 import * as Linking from 'expo-linking';
-import { Button } from 'react-native';
 import {useState} from 'react';
-import { SafeAreaView, StyleSheet, TouchableOpacity, TextInput, ScrollView} from 'react-native';
-import SendSMS from 'react-native-sms';
+import { StyleSheet } from 'react-native';
+import { Image, TouchableOpacity, Button} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-function MyBackButton() {
-    const navigation = useNavigation();
-  
-    return (
-      <Button
-        title="Back"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-    );
-  }
-export default function PhoneTextSupportScreen({ navigation: { navigate } }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Phone and Text Support</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Text style={styles.body}>Our 24/7, free, anonymous hotline, 
-      allows help to be just a phone call or text away for anyone 
-      needing support as they care for children.</Text>
-      <Button title="Text Someone Now" color="#205BB5"  onPress= {SendText}/>
-      <Button title="Call Stress Line" color="#205BB5"  onPress= {()=> Linking.openURL('tel:+18006328188')}  accessibilityLabel="1-800-632-8188"/>
-      <Text style={styles.header}>Stress Line FAQ</Text>
-      <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        <Text style={styles.body}>
-        Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?
-        A: [desc] Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        </Text>
-      </ScrollView>
-    </SafeAreaView>
 
-      <EditScreenInfo path="/screens/PhoneTextSupport.js" />
-    </View>
+function MyBackButton() {
+  const navigation = useNavigation();
+
+  return (
+    <Button
+      title="Back"
+      onPress={() => {
+        navigation.goBack();
+      }}
+    />
   );
 }
 
+export default function PhoneTextSupportScreen({ navigation: { navigate } }){
+  return(
+    <View style={styles.container}>
+    <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
+    <Text style={styles.title}>Phone and Text Support</Text>
+    <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
+    <Text style={styles.description}>Our 24/7, free, anonymous hotline allows help to be just a phone call or text away for anyone needing support as they care for children.</Text>
 
-const SendText = () => {
-  const [mobileNumber, setMobileNumber] = useState('9999999999');
-  const [bodySMS, setBodySMS] = useState(
-    'This is the body of the text pepepopo',
+    <View style={styles.separator} lightColor="#FFFFFF" darkColor="#FFFFFF" /> 
+    <TouchableOpacity onPress={() => navigate('Nothing yet')} style={styles.homeButton}>
+      <Text style={styles.homeButtonText}>TEXT SOMEONE NOW</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigate('Nothing Yet')} style={styles.homeButton}>
+      <Text style={styles.homeButtonText}>1-800-632-8188</Text>
+    </TouchableOpacity>
+
+    <Text style={styles.green}>CONTACT US</Text>
+    <Text style={styles.description}>
+    Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?{"\n"}
+    A: [desc] Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.{"\n"}
+    Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?{"\n"}
+    A: [desc] Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </Text>
+
+    <EditScreenInfo path="/screens/HomeScreen.js" />
+  </View>
   );
-
-  const initiateSMS = () => {
-    // Check for perfect 10 digit length
-    if (mobileNumber.length != 10) {
-      alert('18006328188');
-      return;
-    }
-
-    SendSMS.send(
-      {
-        // Message body
-        body: bodySMS,
-        // Recipients Number
-        recipients: [mobileNumber],
-        // An array of types 
-        // "completed" response when using android
-        // successTypes: ['sent', 'queued'],
-      },
-      (completed: any, cancelled: any, error: any) => {
-        if (completed) {
-          console.log('SMS Sent Completed');
-        } else if (cancelled) {
-          console.log('SMS Sent Cancelled');
-        } else if (error) {
-          console.log('Some error occured');
-        }
-      },
-    );
-  };
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.text_container}>
-        <Text style={styles.titleText}>
-          This is some sample text to send to our textline
-        </Text>
-        <Text style={styles.titleTextsmall}>
-          Enter Your Mobile Number Here
-        </Text>
-        <TextInput
-          value={mobileNumber}
-          onChangeText={
-            (mobileNumber) => setMobileNumber(mobileNumber)
-          }
-          placeholder={'Enter Contact Number to Call'}
-          keyboardType="numeric"
-          style={styles.textInput}
-        />
-        <Text style={styles.titleTextsmall}>
-          Enter SMS body
-        </Text>
-        <TextInput
-          value={bodySMS}
-          onChangeText={(bodySMS) => setBodySMS(bodySMS)}
-          placeholder={'Enter SMS body'}
-          style={styles.textInput}
-        />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.buttonStyle}
-          onPress={initiateSMS}>
-          <Text style={styles.buttonTextStyle}>
-            Send Message
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
-};
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white',
-    marginHorizontal: 20,
-  },
-  text_container: {
-    flex: 1,
-    backgroundColor: 'white',
-    padding: 10,
-    textAlign: 'center',
-  },
-  titleText: {
-    textAlign: 'center',
-    fontSize: 22,
-    fontWeight: 'normal',
-  },
-  titleTextsmall: {
-     marginVertical: 8,
-     fontSize: 14,
-  },
-  textInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    width: '100%',
-    paddingHorizontal: 10,
-  },
-  buttonStyle: {
-    justifyContent: 'center',
-    marginTop: 15,
-    padding: 10,
-  },
-  buttonTextStyle: {
-    color: '#00000',
-    textAlign: 'center',
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    color: "#205bb5",
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: 'bold',
-    fontFamily: "Raleway",
+    color: '#205BB5',
+  },
+  slogan: {
+    alignItems: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: '80%',
   },
-  body: {
+  description: {
+    fontSize: 14,
     alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 16,
-    fontFamily: "Raleway",
-    fontWeight: "300",
-    color: "#000000",
   },
-  header: {
-    color: "#77a22f",
-    fontSize: 28,
-  }
+  homeButton: {
+    margin: 1,
+    backgroundColor: "white",
+    borderRadius: 10,
+    borderWidth: 1,
+    padding : 10,
+  },
+  homeButtonText: {
+    fontSize: 18,
+    color: '#000000',
+  }, 
+  green: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: '#77A22F',
+  },
+    
 });
